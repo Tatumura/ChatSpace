@@ -1,25 +1,22 @@
-
+=======
 #DB設計
-
 
 ##テーブル
 messages
 users
 groups
-members
 user_groups
 
-
+>>>>>>> origin/master
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |body|text|index|
 |image|string|
-ger|null: false, foreign_key: true|
+
 |user_id|integer|null: false, foreign_key: true|
 |group_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
->
+
 
 ### Association
 - belongs_to :group
@@ -34,6 +31,7 @@ ger|null: false, foreign_key: true|
 
 ### Association
 - has_many: messages
+<<<<<<< HEAD
 - has_many: groups
 - has_many: menbers
 
@@ -62,6 +60,25 @@ ger|null: false, foreign_key: true|
 ### user_groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
+=======
+- has_many: groups, through: :user_groups
+- has_many: user_groups
+
+
+## groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many: messages
+- has_many: user_groups
+- has many: users, through: :user_groups
+
+### user_groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+>>>>>>> origin/master
 |group_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 
