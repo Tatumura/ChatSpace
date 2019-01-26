@@ -1,2 +1,7 @@
-/tmp/cache/*
+/.bundle
+
+/tmp/*
 !/tmp/.gitkeep
+
+*.jpg
+*.png
