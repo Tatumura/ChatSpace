@@ -43,32 +43,6 @@ user_groups
 - has_many: members
 - has many: users
 
-### membersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|group_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
-- has_many: user_groups
-- has many: users, through: :user_groups
-
-### user_groupsテーブル
-|Column|Type|Options|
-|------|----|-------|
-=======
-- has_many: groups, through: :user_groups
-- has_many: user_groups
-
-
-## groupsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many: messages
-- has_many: user_groups
-- has many: users, through: :user_groups
-
 ### user_groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -78,3 +52,4 @@ user_groups
 ### Association
 - belongs_to :group
 - belongs_to :user
+
