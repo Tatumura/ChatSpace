@@ -1,0 +1,7 @@
+/.bundle
+
+/tmp/*
+!/tmp/.gitkeep
+
+*.jpg
+*.png
