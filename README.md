@@ -1,4 +1,3 @@
-=======
 #DB設計
 
 ##テーブル
@@ -12,7 +11,7 @@ user_groups
 |------|----|-------|
 |body|text|index|
 |image|string|
-|user_id|integer|null: false, foreign_key: true|
+
 |group_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 
@@ -42,7 +41,6 @@ user_groups
 - has_many: messages
 - has_many: members
 - has many: users
-
 ### user_groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
