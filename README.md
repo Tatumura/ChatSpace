@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
 #DB設計
 
 ##テーブル
@@ -7,12 +10,16 @@ users
 groups
 user_groups
 
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |body|text|index|
 |image|string|
+<<<<<<< HEAD
 
 |user_id|integer|null: false, foreign_key: true|
 |group_id|references|null: false, foreign_key: true|
@@ -35,6 +42,24 @@ user_groups
 - has_many: groups
 - has_many: menbers
 
+=======
+|group_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :group
+- belongs_to :user
+
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|text|null: false|
+|password|string|null: false|
+
+### Association
+- has_many: messages
+>>>>>>> origin/master
 - has_many: groups, through: :user_groups
 - has_many: user_groups
 
@@ -46,6 +71,7 @@ user_groups
 
 ### Association
 - has_many: messages
+<<<<<<< HEAD
 - has_many: members
 - has many: users
 
@@ -72,6 +98,14 @@ user_groups
 
 ### Association
 - has_many: messages
+- has_many: user_groups
+- has many: users, through: :user_groups
+
+### user_groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+>>>>>>> origin/master
+=======
 - has_many: user_groups
 - has many: users, through: :user_groups
 
