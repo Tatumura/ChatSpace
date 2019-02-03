@@ -3820,3 +3820,124 @@ Processing by GroupsController#new as HTML
 Completed 200 OK in 35ms (Views: 31.6ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/groups/new" for 127.0.0.1 at 2019-02-03 14:07:07 +0900
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (19.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/new.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  Rendered groups/new.html.haml within layouts/application (150.6ms)
+  Rendered layouts/_notifications.html.haml (2.0ms)
+Completed 200 OK in 413ms (Views: 195.5ms | ActiveRecord: 27.8ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at 2019-02-03 14:13:26 +0900
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/new.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  Rendered groups/new.html.haml within layouts/application (9.2ms)
+  Rendered layouts/_notifications.html.haml (1.6ms)
+Completed 200 OK in 60ms (Views: 34.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/groups" for 127.0.0.1 at 2019-02-03 14:13:46 +0900
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IvA+XglUkYCK9CbNGcBjvKNK6s1ohXuZWFj5kAqFmdzyNcdsSDu5KTLqK9QJsnapw+GIe7g28pMObSX1d7kPvw==", "group"=>{"name"=>"変態紳士", "user_ids"=>["", "1", "2", "3", "4", "5", "6"]}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (1, 2, 3, 4, 5, 6)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.3ms)[0m  [1m[32mINSERT INTO `groups` (`name`, `created_at`, `updated_at`) VALUES ('変態紳士', '2019-02-03 05:13:46', '2019-02-03 05:13:46')[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2019-02-03 05:13:46', '2019-02-03 05:13:46')[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 2, '2019-02-03 05:13:46', '2019-02-03 05:13:46')[0m
+  [1m[35mSQL (8.9ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 3, '2019-02-03 05:13:46', '2019-02-03 05:13:46')[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 4, '2019-02-03 05:13:46', '2019-02-03 05:13:46')[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 5, '2019-02-03 05:13:46', '2019-02-03 05:13:46')[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 6, '2019-02-03 05:13:46', '2019-02-03 05:13:46')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 50ms (ActiveRecord: 20.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:13:46 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering messages/index.html.haml within layouts/application
+  [1m[36mGroup Load (2.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 6[0m
+  Rendered shared/_side_bar.html.haml (164.4ms)
+  Rendered messages/index.html.haml within layouts/application (175.4ms)
+Completed 500 Internal Server Error in 186ms (ActiveRecord: 2.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `group_messages_path' for #<#<Class:0x007f9e18d9b2b0>:0x007f9e18d98880>
+Did you mean?  groups_path):
+    12:   .groups
+    13:     .group
+    14:       - current_user.groups.each do |group|
+    15:         = link_to group_messages_path(group) do
+    16:           .group__name
+    17:             = group.name
+    18:           .group__message
+  
+app/views/shared/_side_bar.html.haml:15:in `block in _app_views_shared__side_bar_html_haml__2807395209434886094_70158519060020'
+app/views/shared/_side_bar.html.haml:14:in `_app_views_shared__side_bar_html_haml__2807395209434886094_70158519060020'
+app/views/messages/index.html.haml:3:in `_app_views_messages_index_html_haml__719154058647781855_70158499251300'
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.1ms)
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (117.4ms)
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:15:44 +0900
+  
+SyntaxError (/Users/cunyuelongye/ChatSpace/config/routes.rb:5: syntax error, unexpected ':', expecting ']'
+  resources :groups, only: [:new, :create, :index :edit, :update] do
+                                                   ^
+/Users/cunyuelongye/ChatSpace/config/routes.rb:5: syntax error, unexpected ']', expecting &. or :: or '[' or '.'
+  resources :groups, only: [:new, :create, :index :edit, :update] do
+                                                                 ^):
+  
+config/routes.rb:5: syntax error, unexpected ':', expecting ']'
+config/routes.rb:5: syntax error, unexpected ']', expecting &. or :: or '[' or '.'
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.8ms)
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (104.8ms)
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:16:02 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering messages/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 6[0m
+  Rendered shared/_side_bar.html.haml (136.1ms)
+  Rendered messages/index.html.haml within layouts/application (144.5ms)
+Completed 500 Internal Server Error in 172ms (ActiveRecord: 13.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `group_messages_path' for #<#<Class:0x007f9e1b199090>:0x007f9e1b1919a8>
+Did you mean?  groups_path):
+    12:   .groups
+    13:     .group
+    14:       - current_user.groups.each do |group|
+    15:         = link_to group_messages_path(group) do
+    16:           .group__name
+    17:             = group.name
+    18:           .group__message
+  
+app/views/shared/_side_bar.html.haml:15:in `block in _app_views_shared__side_bar_html_haml__2807395209434886094_70158491864200'
+app/views/shared/_side_bar.html.haml:14:in `_app_views_shared__side_bar_html_haml__2807395209434886094_70158491864200'
+app/views/messages/index.html.haml:3:in `_app_views_messages_index_html_haml__719154058647781855_70158518113000'
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.2ms)
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/cunyuelongye/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (108.3ms)
