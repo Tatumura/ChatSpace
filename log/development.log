@@ -4446,3 +4446,16 @@ Processing by GroupsController#new as HTML
 Completed 200 OK in 156ms (Views: 140.1ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-02-06 13:13:12 +0900
+Processing by MessagesController#index as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  `groups`.* FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  Rendering messages/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 6[0m
+  Rendered shared/_side_bar.html.haml (11.5ms)
+  Rendered messages/index.html.haml within layouts/application (24.1ms)
+  Rendered layouts/_notifications.html.haml (1.6ms)
+Completed 200 OK in 81ms (Views: 46.8ms | ActiveRecord: 10.2ms)
+
+
