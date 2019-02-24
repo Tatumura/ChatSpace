@@ -61,12 +61,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem "font-awesome-rails"
 
   gem 'devise'
-<<<<<<< Updated upstream
   gem 'carrierwave'
   gem 'mini_magick'
 
-group :test, :development do
-  gem 'capybara'
-end
-=======
->>>>>>> Stashed changes
+# group :test, :development do
+#   gem 'capybara'
+# end
+
