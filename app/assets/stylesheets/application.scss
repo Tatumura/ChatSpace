@@ -1,21 +1,13 @@
 
 @import "config/color";
-<<<<<<< Updated upstream
 @import "font-awesome";
-=======
->>>>>>> Stashed changes
 @import "modules/flash";
 @import "config/font-size";
 @import "mixin/mixin";
 @import "config/_reset";
 @import "mixin/vendor_prefix";
-@import "modules/side_bar";
-@import "modules/chat";
-<<<<<<< Updated upstream
-@import "modules//user";
-@import "modules//group";
-=======
+@import "models/side_bar";
+@import "models/chat";
 @import "modules/user";
-@import "modules/group";
->>>>>>> Stashed changes
+@import "modules//group";
 @import "messages/messages.scss"

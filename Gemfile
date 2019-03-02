@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
@@ -64,7 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'carrierwave'
   gem 'mini_magick'
 
-# group :test, :development do
-#   gem 'capybara'
-# end
+group :test, :development do
+  gem 'capybara'
+end
 
