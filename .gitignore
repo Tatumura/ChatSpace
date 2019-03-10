@@ -1,5 +1,7 @@
 /.bundle
 
+log/development.log
+
 /tmp/*
 !/tmp/.gitkeep
 
