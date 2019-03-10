@@ -1,7 +1,6 @@
 /.bundle
 
-# log フォルダは要らない
-log/
+development-a.log
 
 /tmp/*
 !/tmp/.gitkeep
