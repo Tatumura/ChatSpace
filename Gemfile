@@ -37,9 +37,6 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry-rails'
-  gem 'rspec-rails', '~> 3.5'
-  gem 'rails-controller-testing'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
 end
