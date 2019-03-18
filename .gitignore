@@ -1,6 +1,6 @@
 /.bundle
 
-development-a.log
+/log/
 
 /tmp/*
 !/tmp/.gitkeep
