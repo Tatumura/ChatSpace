@@ -2,7 +2,7 @@ $(function(){
 
   var leastMessage = window.leastMessage;
 
-  function buildHTML(message) {
+  function buildCOMENTHTML(message) {
         var  insertImage = '';
     if (message.image_url) {
        insertImage = `<img src="${message.image_url}">`;
@@ -38,8 +38,8 @@ $(function(){
       processData: false,
       contentType: false
     })
-    .done(function(data) {
-      var html = buildHTML(data);
+    .done(function(text) {
+      var html = buildHTML(text);
       $('.message').append(html);
       $('.textbox').val('')
     })
@@ -57,9 +57,9 @@ $(function(){
         date: { id: leastMessage },
         dataType: 'json'
       })
-      .done(function(data) {
+      .done(function(text) {
         var insertHTML = '';
-        data.forEach(function(message) {
+        text.forEach(function(message) {
           insertHTML += buildHTML(message);
           leastMessage = message;
         });
