@@ -65,3 +65,4 @@ group :test, :development do
   gem 'capybara'
 end
 gem 'rake'
+gem 'pry'
