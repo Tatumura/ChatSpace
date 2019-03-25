@@ -38,10 +38,10 @@ $(function(){
       processData: false,
       contentType: false
     })
-    .done(function(text) {
+    .done(function resetForm(text) {
       var html = buildHTML(text);
       $('.message').append(html);
-      $('.textbox').val('')
+      $('.textbox').reset();
     })
     .fail(function() {
       alert('error');
