@@ -41,7 +41,6 @@ $(function(){
     .done(function Form(text) {
       var html = buildHTML(text);
       $('.message').append(html);
-      $('.textbox').val('')
       $('form')[0].reset();
     })
     .fail(function() {
