@@ -51,23 +51,23 @@ $(function(){
   var interval = setInterval(function() {
     var leastMessage = $('.chat-body:last').data('id');
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
-      $.ajax({
+     $.ajax({
         url: location.href.json,
         type: 'GET',
         date: { id: leastMessage },
         dataType: 'json'
       })
-      .done(function(text) {
-        var insertHTML = '';
-        text.forEach(function(message) {
-          insertHTML += buildHTML(message);
-          leastMessage = message;
-        });
-        $('.messageslists').append(insertHTML);
+    .done(function(text) {
+    var insertHTML = '';
+     text.forEach(function(message) {
+      insertHTML += buildHTML(message);
+      leastMessage = message;
+      });
+     $('.messageslists').append(insertHTML);
       })
 
-            .fail(function(json) {
-        alert('自動更新に失敗しました');
+    .fail(function(json) {
+      alert('自動更新に失敗しました');
       });
     } else {
       clearInterval(interval);
