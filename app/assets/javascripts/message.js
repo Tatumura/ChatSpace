@@ -1,8 +1,11 @@
-$(function() {
-  function buildHTML(message) {
-        var insertImage = '';
+$(function(){
+
+  var leastMessage = window.leastMessage;
+
+  function buildCOMENTHTML(message) {
+        var  insertImage = '';
     if (message.image_url) {
-      Image = `<img src="${message.image_url}">`;
+       insertImage = `<img src="${message.image_url}">`;
     }
 
         var html = `<div class='chat-body' data-id="${message.id}">
@@ -15,11 +18,13 @@ $(function() {
                   <div class='chat-body--message'>
                     ${message.body}
                       </div>
-                    ${Image}
+                    ${ insertImage}
                   </div>
                 </div>`;
     return html;
   }
+
+
 
   $('#new_comment').on('submit', function(e){
     e.preventDefault();
@@ -33,13 +38,38 @@ $(function() {
       processData: false,
       contentType: false
     })
-    .done(function(data) {
-      var html = buildHTML(data);
+    .done(function Form(text) {
+      var html = buildHTML(text);
       $('.message').append(html);
-      $('.textbox').val('')
+      $('form')[0].reset();
     })
     .fail(function() {
       alert('error');
     });
   });
-});
+
+  var interval = setInterval(function() {
+    var leastMessage = $('.chat-body:last').data('id');
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+     $.ajax({
+        url: location.href.json,
+        type: 'GET',
+        date: { id: leastMessage },
+        dataType: 'json'
+      })
+    .done(function(text) {
+    var insertHTML = '';
+     text.forEach(function(message) {
+      insertHTML += buildHTML(message);
+      leastMessage = message;
+      });
+     $('.messageslists').append(insertHTML);
+      })
+
+    .fail(function(json) {
+      alert('自動更新に失敗しました');
+      });
+    } else {
+      clearInterval(interval);
+    }} , 5000 );
+  });
