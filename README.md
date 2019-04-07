@@ -11,6 +11,7 @@ user_groups
 |------|----|-------|
 |body|text|index|
 |image|string|
+
 |group_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 
@@ -38,8 +39,7 @@ user_groups
 
 ### Association
 - has_many: messages
-- has_many: user_groups
-- has many: users, through: :user_groups
+
 
 ### user_groupsテーブル
 |Column|Type|Options|
@@ -50,3 +50,4 @@ user_groups
 ### Association
 - belongs_to :group
 - belongs_to :user
+
