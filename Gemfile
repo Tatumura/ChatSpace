@@ -60,13 +60,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'devise'
   gem 'carrierwave'
   gem 'mini_magick'
-
+end
 group :test, :development do
   gem 'capybara'
 end
 gem 'rake'
 gem 'pry'
-
+end
 group :production do
   gem 'unicorn', '5.4.1'
 end

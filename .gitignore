@@ -5,5 +5,4 @@ log/
 /tmp/*
 !/tmp/.gitkeep
 
-*.jpg
 *.png
