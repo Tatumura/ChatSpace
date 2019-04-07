@@ -66,3 +66,7 @@ group :test, :development do
 end
 gem 'rake'
 gem 'pry'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
