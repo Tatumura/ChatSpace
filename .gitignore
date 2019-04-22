@@ -4,3 +4,5 @@ log/
 
 /tmp/*
 !/tmp/.gitkeep
+
+config/secrets.yml
