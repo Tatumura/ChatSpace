@@ -2,5 +2,7 @@
 
 log/
 
-# /tmp/*
-# !/tmp/.gitkeep
+/tmp/*
+!/tmp/.gitkeep
+
+config/secrets.yml
